@@ -18,12 +18,61 @@ class Simulator_greedy:
         self.device_graph = device_graph
         self.task_iner_priority = task_iner_priority
         self.transfer_device = [[] for task in range(len(self.task_iner_priority))]
+        '''
+        a=[["data", "conv1-1"], ["data2", "conv2-1","data", "conv1-1"], ["data", "conv1-1", "loss", "output"]]
+        print(a)
+
+        b=[[] for task in range(len(a))]
+        print(b)
+
+        ---------------------------------------
+        [['data', 'conv1-1'], ['data2', 'conv2-1', 'data', 'conv1-1'], ['data', 'conv1-1', 'loss', 'output']]
+        [[], [], []]
+        '''
         self.op_device_run_time = {task: {} for task in range(len(self.task_iner_priority))}
+        '''
+        a=[["data", "conv1-1"], ["data2", "conv2-1","data", "conv1-1"], ["data", "conv1-1", "loss", "output"]]
+        print(a)
+
+        b={task: {} for task in range(len(a))}
+        print(b)
+        ---------------------------------------
+        [['data', 'conv1-1'], ['data2', 'conv2-1', 'data', 'conv1-1'], ['data', 'conv1-1', 'loss', 'output']]
+        {0: {}, 1: {}, 2: {}}
+        '''
         self.device_finishtime = [0 for device in self.device_graph.devices]
+        '''
+        #total 34 devices
+        a=[0,1,2,3,4,5,6]
+        b = [0 for device in a]
+        print(b)
+        ---------------------------------------
+        [0, 0, 0, 0, 0, 0, 0]
+        '''
         self.transfer_finishtime = [0 for comm_channel in self.device_graph.comm_channels]
         self.t = list(map(int, np.zeros(len(self.task_iner_priority))))
+        '''
+        a=[["data", "conv1-1"], ["data2", "conv2-1","data", "conv1-1"], ["data", "conv1-1", "loss","output"]]
+        print(a)
+        import numpy as np
+        t = list(map(int, np.zeros(len(a))))
+        print(t)
+        --------------------
+        [['data', 'conv1-1'], ['data2', 'conv2-1', 'data', 'conv1-1'], ['data', 'conv1-1', 'loss', 'output']]
+        [0, 0, 0]
+        '''
         self.last_reward = 0
         self.device_gflop = self.computing_capacity()
+        '''
+        device_gflop = []
+        a=[11,1,2,3,4,5,6]
+
+        for i in range(len(a)):
+            device_gflop.append(a[i])
+        print(device_gflop)
+        ---------------------
+        [11, 1, 2, 3, 4, 5, 6]
+        '''
         self.batch_size = 1
         self.comp_penalization = 1
         self.comm_penalization = 1
