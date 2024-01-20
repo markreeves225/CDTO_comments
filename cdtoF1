@@ -1,0 +1,1032 @@
+{0: [1, 1, 2, 3, 0, 0, 3, 2, 1, 1, 3, 3, 3, 1, 1, 1, 3, 0, 0, 1, 0, 2, 0, 2, 3], 1: [3, 3, 3, 3, 1, 2, 0, 0, 1, 3, 1, 2, 3, 2, 3, 3, 2, 3, 1, 2, 0, 2, 1, 2, 0], 2: [1, 2, 2, 0, 0, 3, 3, 0, 2, 0, 3, 1, 0, 2, 3, 3, 0, 0, 0, 3, 2, 2, 1, 0, 2], 3: [0, 0, 0, 0, 1, 3, 2, 2, 1, 0, 2, 2, 2, 1, 3, 3, 3, 3, 0, 2, 3, 1, 2, 3, 2], 4: [2, 2, 0, 3, 2, 0, 3, 1, 0, 2, 3, 2, 2, 2, 3, 0, 0, 0, 2, 2, 3, 2, 2, 1, 2], 5: [1, 2, 2, 2, 2, 3, 0, 0, 1, 2, 1, 2, 1, 2, 1, 3, 0, 0, 2, 2, 1, 3, 1, 0, 2], 6: [1, 3, 2, 1, 0, 0, 1, 2, 1, 2, 2, 0, 2, 1, 3, 2, 2, 3, 2, 3, 2, 3, 3, 0, 3], 7: [1, 1, 0, 3, 3, 1, 0, 3, 2, 2, 1, 0, 2, 0, 1, 0, 0, 1, 3, 0, 0, 3, 0, 1, 2], 8: [1, 0, 3, 0, 0, 2, 1, 2, 3, 0, 2, 1, 1, 0, 0, 1, 1, 2, 1, 0, 3, 3, 0, 2, 1], 9: [2, 3, 0, 3, 2, 0, 0, 1, 0, 0, 0, 0, 3, 0, 0, 3, 2, 1, 2, 0, 2, 3, 3, 2, 2]}
+<class 'list'>
+250
+Layer Name: data
+Layer Type: Input
+Layer Parameters: {'parents': [], 'type': 'Input', 'tensor': [64, 299, 299, 3], 'device': 0}
+Layer Parents: []
+Layer Inbounds: []
+Layer Outbounds: [Conv2d_1a_3x3]
+Layer Device: 0
+------
+Layer Name: Conv2d_1a_3x3
+Layer Type: Convolution
+Layer Parameters: {'parents': ['data'], 'type': 'Convolution', 'filter': [3, 3, 3, 32], 'padding': 'VALID', 'strides': [1, 2, 2, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [data]
+Layer Inbounds: [data]
+Layer Outbounds: [Conv2d_2a_3x3]
+Layer Device: 0
+------
+Layer Name: Conv2d_2a_3x3
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Conv2d_1a_3x3'], 'type': 'Convolution', 'filter': [3, 3, 32, 32], 'padding': 'VALID', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Conv2d_1a_3x3]
+Layer Inbounds: [Conv2d_1a_3x3]
+Layer Outbounds: [Conv2d_2b_3x3]
+Layer Device: 0
+------
+Layer Name: Conv2d_2b_3x3
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Conv2d_2a_3x3'], 'type': 'Convolution', 'filter': [3, 3, 32, 64], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Conv2d_2a_3x3]
+Layer Inbounds: [Conv2d_2a_3x3]
+Layer Outbounds: [MaxPool_3a_3x3]
+Layer Device: 0
+------
+Layer Name: MaxPool_3a_3x3
+Layer Type: Pooling
+Layer Parameters: {'parents': ['Conv2d_2b_3x3'], 'type': 'Pooling', 'ksize': [1, 3, 3, 1], 'strides': [1, 2, 2, 1], 'padding': 'VALID', 'device': 0}
+Layer Parents: [Conv2d_2b_3x3]
+Layer Inbounds: [Conv2d_2b_3x3]
+Layer Outbounds: [Conv2d_3b_1x1]
+Layer Device: 0
+------
+Layer Name: Conv2d_3b_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['MaxPool_3a_3x3'], 'type': 'Convolution', 'filter': [1, 1, 64, 80], 'padding': 'VALID', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [MaxPool_3a_3x3]
+Layer Inbounds: [MaxPool_3a_3x3]
+Layer Outbounds: [Conv2d_4a_3x3]
+Layer Device: 0
+------
+Layer Name: Conv2d_4a_3x3
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Conv2d_3b_1x1'], 'type': 'Convolution', 'filter': [3, 3, 80, 192], 'padding': 'VALID', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Conv2d_3b_1x1]
+Layer Inbounds: [Conv2d_3b_1x1]
+Layer Outbounds: [MaxPool_5a_3x3]
+Layer Device: 0
+------
+Layer Name: MaxPool_5a_3x3
+Layer Type: Pooling
+Layer Parameters: {'parents': ['Conv2d_4a_3x3'], 'type': 'Pooling', 'ksize': [1, 3, 3, 1], 'strides': [1, 2, 2, 1], 'padding': 'VALID', 'device': 0}
+Layer Parents: [Conv2d_4a_3x3]
+Layer Inbounds: [Conv2d_4a_3x3]
+Layer Outbounds: [Mixed_5b/Branch_0/Conv2d_0a_1x1, Mixed_5b/Branch_1/Conv2d_0a_1x1, Mixed_5b/Branch_2/Conv2d_0a_1x1, Mixed_5b/Branch_3/AvgPool_0a_3x3]
+Layer Device: 0
+------
+Layer Name: Mixed_5b/Branch_3/AvgPool_0a_3x3
+Layer Type: AvgPool
+Layer Parameters: {'parents': ['MaxPool_5a_3x3'], 'type': 'AvgPool', 'ksize': [1, 3, 3, 1], 'strides': [1, 1, 1, 1], 'padding': 'SAME', 'device': 0}
+Layer Parents: [MaxPool_5a_3x3]
+Layer Inbounds: [MaxPool_5a_3x3]
+Layer Outbounds: [Mixed_5b/Branch_3/Conv2d_0b_1x1]
+Layer Device: 0
+------
+Layer Name: Mixed_5b/Branch_3/Conv2d_0b_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_5b/Branch_3/AvgPool_0a_3x3'], 'type': 'Convolution', 'filter': [1, 1, 192, 32], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_5b/Branch_3/AvgPool_0a_3x3]
+Layer Inbounds: [Mixed_5b/Branch_3/AvgPool_0a_3x3]
+Layer Outbounds: [Mixed_5b/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_5b/Branch_2/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['MaxPool_5a_3x3'], 'type': 'Convolution', 'filter': [1, 1, 192, 64], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [MaxPool_5a_3x3]
+Layer Inbounds: [MaxPool_5a_3x3]
+Layer Outbounds: [Mixed_5b/Branch_2/Conv2d_0b_3x3]
+Layer Device: 0
+------
+Layer Name: Mixed_5b/Branch_2/Conv2d_0b_3x3
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_5b/Branch_2/Conv2d_0a_1x1'], 'type': 'Convolution', 'filter': [3, 3, 64, 96], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_5b/Branch_2/Conv2d_0a_1x1]
+Layer Inbounds: [Mixed_5b/Branch_2/Conv2d_0a_1x1]
+Layer Outbounds: [Mixed_5b/Branch_2/Conv2d_0c_3x3]
+Layer Device: 0
+------
+Layer Name: Mixed_5b/Branch_2/Conv2d_0c_3x3
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_5b/Branch_2/Conv2d_0b_3x3'], 'type': 'Convolution', 'filter': [3, 3, 96, 96], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_5b/Branch_2/Conv2d_0b_3x3]
+Layer Inbounds: [Mixed_5b/Branch_2/Conv2d_0b_3x3]
+Layer Outbounds: [Mixed_5b/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_5b/Branch_1/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['MaxPool_5a_3x3'], 'type': 'Convolution', 'filter': [1, 1, 192, 48], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [MaxPool_5a_3x3]
+Layer Inbounds: [MaxPool_5a_3x3]
+Layer Outbounds: [Mixed_5b/Branch_1/Conv2d_0b_5x5]
+Layer Device: 0
+------
+Layer Name: Mixed_5b/Branch_1/Conv2d_0b_5x5
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_5b/Branch_1/Conv2d_0a_1x1'], 'type': 'Convolution', 'filter': [5, 5, 48, 64], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_5b/Branch_1/Conv2d_0a_1x1]
+Layer Inbounds: [Mixed_5b/Branch_1/Conv2d_0a_1x1]
+Layer Outbounds: [Mixed_5b/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_5b/Branch_0/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['MaxPool_5a_3x3'], 'type': 'Convolution', 'filter': [1, 1, 192, 64], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [MaxPool_5a_3x3]
+Layer Inbounds: [MaxPool_5a_3x3]
+Layer Outbounds: [Mixed_5b/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_5b/concat
+Layer Type: Concatenate
+Layer Parameters: {'parents': ['Mixed_5b/Branch_0/Conv2d_0a_1x1', 'Mixed_5b/Branch_1/Conv2d_0b_5x5', 'Mixed_5b/Branch_2/Conv2d_0c_3x3', 'Mixed_5b/Branch_3/Conv2d_0b_1x1'], 'type': 'Concatenate', 'dim': 3, 'device': 0}
+Layer Parents: [Mixed_5b/Branch_0/Conv2d_0a_1x1, Mixed_5b/Branch_1/Conv2d_0b_5x5, Mixed_5b/Branch_2/Conv2d_0c_3x3, Mixed_5b/Branch_3/Conv2d_0b_1x1]
+Layer Inbounds: [Mixed_5b/Branch_0/Conv2d_0a_1x1, Mixed_5b/Branch_1/Conv2d_0b_5x5, Mixed_5b/Branch_2/Conv2d_0c_3x3, Mixed_5b/Branch_3/Conv2d_0b_1x1]
+Layer Outbounds: [Mixed_5c/Branch_0/Conv2d_0a_1x1, Mixed_5c/Branch_1/Conv2d_0a_1x1, Mixed_5c/Branch_2/Conv2d_0a_1x1, Mixed_5c/Branch_3/AvgPool_0a_3x3]
+Layer Device: 0
+------
+Layer Name: Mixed_5c/Branch_3/AvgPool_0a_3x3
+Layer Type: AvgPool
+Layer Parameters: {'parents': ['Mixed_5b/concat'], 'type': 'AvgPool', 'ksize': [1, 3, 3, 1], 'strides': [1, 1, 1, 1], 'padding': 'SAME', 'device': 0}
+Layer Parents: [Mixed_5b/concat]
+Layer Inbounds: [Mixed_5b/concat]
+Layer Outbounds: [Mixed_5c/Branch_3/Conv2d_0b_1x1]
+Layer Device: 0
+------
+Layer Name: Mixed_5c/Branch_3/Conv2d_0b_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_5c/Branch_3/AvgPool_0a_3x3'], 'type': 'Convolution', 'filter': [1, 1, 256, 64], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_5c/Branch_3/AvgPool_0a_3x3]
+Layer Inbounds: [Mixed_5c/Branch_3/AvgPool_0a_3x3]
+Layer Outbounds: [Mixed_5c/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_5c/Branch_2/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_5b/concat'], 'type': 'Convolution', 'filter': [1, 1, 256, 64], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_5b/concat]
+Layer Inbounds: [Mixed_5b/concat]
+Layer Outbounds: [Mixed_5c/Branch_2/Conv2d_0b_3x3]
+Layer Device: 0
+------
+Layer Name: Mixed_5c/Branch_2/Conv2d_0b_3x3
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_5c/Branch_2/Conv2d_0a_1x1'], 'type': 'Convolution', 'filter': [3, 3, 64, 96], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_5c/Branch_2/Conv2d_0a_1x1]
+Layer Inbounds: [Mixed_5c/Branch_2/Conv2d_0a_1x1]
+Layer Outbounds: [Mixed_5c/Branch_2/Conv2d_0c_3x3]
+Layer Device: 0
+------
+Layer Name: Mixed_5c/Branch_2/Conv2d_0c_3x3
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_5c/Branch_2/Conv2d_0b_3x3'], 'type': 'Convolution', 'filter': [3, 3, 96, 96], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_5c/Branch_2/Conv2d_0b_3x3]
+Layer Inbounds: [Mixed_5c/Branch_2/Conv2d_0b_3x3]
+Layer Outbounds: [Mixed_5c/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_5c/Branch_1/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_5b/concat'], 'type': 'Convolution', 'filter': [1, 1, 256, 48], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_5b/concat]
+Layer Inbounds: [Mixed_5b/concat]
+Layer Outbounds: [Mixed_5c/Branch_1/Conv2d_0b_5x5]
+Layer Device: 0
+------
+Layer Name: Mixed_5c/Branch_1/Conv2d_0b_5x5
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_5c/Branch_1/Conv2d_0a_1x1'], 'type': 'Convolution', 'filter': [5, 5, 48, 64], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_5c/Branch_1/Conv2d_0a_1x1]
+Layer Inbounds: [Mixed_5c/Branch_1/Conv2d_0a_1x1]
+Layer Outbounds: [Mixed_5c/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_5c/Branch_0/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_5b/concat'], 'type': 'Convolution', 'filter': [1, 1, 256, 64], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_5b/concat]
+Layer Inbounds: [Mixed_5b/concat]
+Layer Outbounds: [Mixed_5c/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_5c/concat
+Layer Type: Concatenate
+Layer Parameters: {'parents': ['Mixed_5c/Branch_0/Conv2d_0a_1x1', 'Mixed_5c/Branch_1/Conv2d_0b_5x5', 'Mixed_5c/Branch_2/Conv2d_0c_3x3', 'Mixed_5c/Branch_3/Conv2d_0b_1x1'], 'type': 'Concatenate', 'dim': 3, 'device': 0}
+Layer Parents: [Mixed_5c/Branch_0/Conv2d_0a_1x1, Mixed_5c/Branch_1/Conv2d_0b_5x5, Mixed_5c/Branch_2/Conv2d_0c_3x3, Mixed_5c/Branch_3/Conv2d_0b_1x1]
+Layer Inbounds: [Mixed_5c/Branch_0/Conv2d_0a_1x1, Mixed_5c/Branch_1/Conv2d_0b_5x5, Mixed_5c/Branch_2/Conv2d_0c_3x3, Mixed_5c/Branch_3/Conv2d_0b_1x1]
+Layer Outbounds: [Mixed_5d/Branch_0/Conv2d_0a_1x1, Mixed_5d/Branch_1/Conv2d_0a_1x1, Mixed_5d/Branch_2/Conv2d_0a_1x1, Mixed_5d/Branch_3/AvgPool_0a_3x3]
+Layer Device: 0
+------
+Layer Name: Mixed_5d/Branch_3/AvgPool_0a_3x3
+Layer Type: AvgPool
+Layer Parameters: {'parents': ['Mixed_5c/concat'], 'type': 'AvgPool', 'ksize': [1, 3, 3, 1], 'strides': [1, 1, 1, 1], 'padding': 'SAME', 'device': 0}
+Layer Parents: [Mixed_5c/concat]
+Layer Inbounds: [Mixed_5c/concat]
+Layer Outbounds: [Mixed_5d/Branch_3/Conv2d_0b_1x1]
+Layer Device: 0
+------
+Layer Name: Mixed_5d/Branch_3/Conv2d_0b_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_5d/Branch_3/AvgPool_0a_3x3'], 'type': 'Convolution', 'filter': [1, 1, 288, 64], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_5d/Branch_3/AvgPool_0a_3x3]
+Layer Inbounds: [Mixed_5d/Branch_3/AvgPool_0a_3x3]
+Layer Outbounds: [Mixed_5d/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_5d/Branch_2/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_5c/concat'], 'type': 'Convolution', 'filter': [1, 1, 288, 64], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_5c/concat]
+Layer Inbounds: [Mixed_5c/concat]
+Layer Outbounds: [Mixed_5d/Branch_2/Conv2d_0b_3x3]
+Layer Device: 0
+------
+Layer Name: Mixed_5d/Branch_2/Conv2d_0b_3x3
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_5d/Branch_2/Conv2d_0a_1x1'], 'type': 'Convolution', 'filter': [3, 3, 64, 96], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_5d/Branch_2/Conv2d_0a_1x1]
+Layer Inbounds: [Mixed_5d/Branch_2/Conv2d_0a_1x1]
+Layer Outbounds: [Mixed_5d/Branch_2/Conv2d_0c_3x3]
+Layer Device: 0
+------
+Layer Name: Mixed_5d/Branch_2/Conv2d_0c_3x3
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_5d/Branch_2/Conv2d_0b_3x3'], 'type': 'Convolution', 'filter': [3, 3, 96, 96], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_5d/Branch_2/Conv2d_0b_3x3]
+Layer Inbounds: [Mixed_5d/Branch_2/Conv2d_0b_3x3]
+Layer Outbounds: [Mixed_5d/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_5d/Branch_1/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_5c/concat'], 'type': 'Convolution', 'filter': [1, 1, 288, 48], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_5c/concat]
+Layer Inbounds: [Mixed_5c/concat]
+Layer Outbounds: [Mixed_5d/Branch_1/Conv2d_0b_5x5]
+Layer Device: 0
+------
+Layer Name: Mixed_5d/Branch_1/Conv2d_0b_5x5
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_5d/Branch_1/Conv2d_0a_1x1'], 'type': 'Convolution', 'filter': [5, 5, 48, 64], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_5d/Branch_1/Conv2d_0a_1x1]
+Layer Inbounds: [Mixed_5d/Branch_1/Conv2d_0a_1x1]
+Layer Outbounds: [Mixed_5d/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_5d/Branch_0/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_5c/concat'], 'type': 'Convolution', 'filter': [1, 1, 288, 64], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_5c/concat]
+Layer Inbounds: [Mixed_5c/concat]
+Layer Outbounds: [Mixed_5d/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_5d/concat
+Layer Type: Concatenate
+Layer Parameters: {'parents': ['Mixed_5d/Branch_0/Conv2d_0a_1x1', 'Mixed_5d/Branch_1/Conv2d_0b_5x5', 'Mixed_5d/Branch_2/Conv2d_0c_3x3', 'Mixed_5d/Branch_3/Conv2d_0b_1x1'], 'type': 'Concatenate', 'dim': 3, 'device': 0}
+Layer Parents: [Mixed_5d/Branch_0/Conv2d_0a_1x1, Mixed_5d/Branch_1/Conv2d_0b_5x5, Mixed_5d/Branch_2/Conv2d_0c_3x3, Mixed_5d/Branch_3/Conv2d_0b_1x1]
+Layer Inbounds: [Mixed_5d/Branch_0/Conv2d_0a_1x1, Mixed_5d/Branch_1/Conv2d_0b_5x5, Mixed_5d/Branch_2/Conv2d_0c_3x3, Mixed_5d/Branch_3/Conv2d_0b_1x1]
+Layer Outbounds: [Mixed_6a/Branch_0/Conv2d_1a_3x3, Mixed_6a/Branch_1/Conv2d_0a_1x1, Mixed_6a/Branch_2/MaxPool_1a_3x3]
+Layer Device: 0
+------
+Layer Name: Mixed_6a/Branch_2/MaxPool_1a_3x3
+Layer Type: Pooling
+Layer Parameters: {'parents': ['Mixed_5d/concat'], 'type': 'Pooling', 'ksize': [1, 3, 3, 1], 'strides': [1, 2, 2, 1], 'padding': 'VALID', 'device': 0}
+Layer Parents: [Mixed_5d/concat]
+Layer Inbounds: [Mixed_5d/concat]
+Layer Outbounds: [Mixed_6a/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_6a/Branch_1/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_5d/concat'], 'type': 'Convolution', 'filter': [1, 1, 288, 64], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_5d/concat]
+Layer Inbounds: [Mixed_5d/concat]
+Layer Outbounds: [Mixed_6a/Branch_1/Conv2d_0b_3x3]
+Layer Device: 0
+------
+Layer Name: Mixed_6a/Branch_1/Conv2d_0b_3x3
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6a/Branch_1/Conv2d_0a_1x1'], 'type': 'Convolution', 'filter': [3, 3, 64, 96], 'padding': 'VALID', 'strides': [1, 2, 2, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6a/Branch_1/Conv2d_0a_1x1]
+Layer Inbounds: [Mixed_6a/Branch_1/Conv2d_0a_1x1]
+Layer Outbounds: [Mixed_6a/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_6a/Branch_0/Conv2d_1a_3x3
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_5d/concat'], 'type': 'Convolution', 'filter': [3, 3, 288, 384], 'padding': 'VALID', 'strides': [1, 2, 2, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_5d/concat]
+Layer Inbounds: [Mixed_5d/concat]
+Layer Outbounds: [Mixed_6a/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_6a/concat
+Layer Type: Concatenate
+Layer Parameters: {'parents': ['Mixed_6a/Branch_0/Conv2d_1a_3x3', 'Mixed_6a/Branch_1/Conv2d_0b_3x3', 'Mixed_6a/Branch_2/MaxPool_1a_3x3'], 'type': 'Concatenate', 'dim': 3, 'device': 0}
+Layer Parents: [Mixed_6a/Branch_0/Conv2d_1a_3x3, Mixed_6a/Branch_1/Conv2d_0b_3x3, Mixed_6a/Branch_2/MaxPool_1a_3x3]
+Layer Inbounds: [Mixed_6a/Branch_0/Conv2d_1a_3x3, Mixed_6a/Branch_1/Conv2d_0b_3x3, Mixed_6a/Branch_2/MaxPool_1a_3x3]
+Layer Outbounds: [Mixed_6b/Branch_0/Conv2d_0a_1x1, Mixed_6b/Branch_1/Conv2d_0a_1x1, Mixed_6b/Branch_2/Conv2d_0a_1x1, Mixed_6b/Branch_3/AvgPool_0a_3x3]
+Layer Device: 0
+------
+Layer Name: Mixed_6b/Branch_3/AvgPool_0a_3x3
+Layer Type: AvgPool
+Layer Parameters: {'parents': ['Mixed_6a/concat'], 'type': 'AvgPool', 'ksize': [1, 3, 3, 1], 'strides': [1, 1, 1, 1], 'padding': 'SAME', 'device': 0}
+Layer Parents: [Mixed_6a/concat]
+Layer Inbounds: [Mixed_6a/concat]
+Layer Outbounds: [Mixed_6b/Branch_3/Conv2d_0b_1x1]
+Layer Device: 0
+------
+Layer Name: Mixed_6b/Branch_3/Conv2d_0b_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6b/Branch_3/AvgPool_0a_3x3'], 'type': 'Convolution', 'filter': [1, 1, 768, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6b/Branch_3/AvgPool_0a_3x3]
+Layer Inbounds: [Mixed_6b/Branch_3/AvgPool_0a_3x3]
+Layer Outbounds: [Mixed_6b/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_6b/Branch_2/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6a/concat'], 'type': 'Convolution', 'filter': [1, 1, 768, 128], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6a/concat]
+Layer Inbounds: [Mixed_6a/concat]
+Layer Outbounds: [Mixed_6b/Branch_2/Conv2d_0b_7x1]
+Layer Device: 0
+------
+Layer Name: Mixed_6b/Branch_2/Conv2d_0b_7x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6b/Branch_2/Conv2d_0a_1x1'], 'type': 'Convolution', 'filter': [7, 1, 128, 128], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6b/Branch_2/Conv2d_0a_1x1]
+Layer Inbounds: [Mixed_6b/Branch_2/Conv2d_0a_1x1]
+Layer Outbounds: [Mixed_6b/Branch_2/Conv2d_0c_1x7]
+Layer Device: 0
+------
+Layer Name: Mixed_6b/Branch_2/Conv2d_0c_1x7
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6b/Branch_2/Conv2d_0b_7x1'], 'type': 'Convolution', 'filter': [1, 7, 128, 128], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6b/Branch_2/Conv2d_0b_7x1]
+Layer Inbounds: [Mixed_6b/Branch_2/Conv2d_0b_7x1]
+Layer Outbounds: [Mixed_6b/Branch_2/Conv2d_0d_7x1]
+Layer Device: 0
+------
+Layer Name: Mixed_6b/Branch_2/Conv2d_0d_7x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6b/Branch_2/Conv2d_0c_1x7'], 'type': 'Convolution', 'filter': [7, 1, 128, 128], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6b/Branch_2/Conv2d_0c_1x7]
+Layer Inbounds: [Mixed_6b/Branch_2/Conv2d_0c_1x7]
+Layer Outbounds: [Mixed_6b/Branch_2/Conv2d_0e_1x7]
+Layer Device: 0
+------
+Layer Name: Mixed_6b/Branch_2/Conv2d_0e_1x7
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6b/Branch_2/Conv2d_0d_7x1'], 'type': 'Convolution', 'filter': [1, 7, 128, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6b/Branch_2/Conv2d_0d_7x1]
+Layer Inbounds: [Mixed_6b/Branch_2/Conv2d_0d_7x1]
+Layer Outbounds: [Mixed_6b/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_6b/Branch_1/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6a/concat'], 'type': 'Convolution', 'filter': [1, 1, 768, 128], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6a/concat]
+Layer Inbounds: [Mixed_6a/concat]
+Layer Outbounds: [Mixed_6b/Branch_1/Conv2d_0b_1x7]
+Layer Device: 0
+------
+Layer Name: Mixed_6b/Branch_1/Conv2d_0b_1x7
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6b/Branch_1/Conv2d_0a_1x1'], 'type': 'Convolution', 'filter': [1, 7, 128, 128], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6b/Branch_1/Conv2d_0a_1x1]
+Layer Inbounds: [Mixed_6b/Branch_1/Conv2d_0a_1x1]
+Layer Outbounds: [Mixed_6b/Branch_1/Conv2d_0b_7x1]
+Layer Device: 0
+------
+Layer Name: Mixed_6b/Branch_1/Conv2d_0b_7x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6b/Branch_1/Conv2d_0b_1x7'], 'type': 'Convolution', 'filter': [7, 1, 128, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6b/Branch_1/Conv2d_0b_1x7]
+Layer Inbounds: [Mixed_6b/Branch_1/Conv2d_0b_1x7]
+Layer Outbounds: [Mixed_6b/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_6b/Branch_0/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6a/concat'], 'type': 'Convolution', 'filter': [1, 1, 768, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6a/concat]
+Layer Inbounds: [Mixed_6a/concat]
+Layer Outbounds: [Mixed_6b/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_6b/concat
+Layer Type: Concatenate
+Layer Parameters: {'parents': ['Mixed_6b/Branch_0/Conv2d_0a_1x1', 'Mixed_6b/Branch_1/Conv2d_0b_7x1', 'Mixed_6b/Branch_2/Conv2d_0e_1x7', 'Mixed_6b/Branch_3/Conv2d_0b_1x1'], 'type': 'Concatenate', 'dim': 3, 'device': 0}
+Layer Parents: [Mixed_6b/Branch_0/Conv2d_0a_1x1, Mixed_6b/Branch_1/Conv2d_0b_7x1, Mixed_6b/Branch_2/Conv2d_0e_1x7, Mixed_6b/Branch_3/Conv2d_0b_1x1]
+Layer Inbounds: [Mixed_6b/Branch_0/Conv2d_0a_1x1, Mixed_6b/Branch_1/Conv2d_0b_7x1, Mixed_6b/Branch_2/Conv2d_0e_1x7, Mixed_6b/Branch_3/Conv2d_0b_1x1]
+Layer Outbounds: [Mixed_6c/Branch_0/Conv2d_0a_1x1, Mixed_6c/Branch_1/Conv2d_0a_1x1, Mixed_6c/Branch_2/Conv2d_0a_1x1, Mixed_6c/Branch_3/AvgPool_0a_3x3]
+Layer Device: 0
+------
+Layer Name: Mixed_6c/Branch_3/AvgPool_0a_3x3
+Layer Type: AvgPool
+Layer Parameters: {'parents': ['Mixed_6b/concat'], 'type': 'AvgPool', 'ksize': [1, 3, 3, 1], 'strides': [1, 1, 1, 1], 'padding': 'SAME', 'device': 0}
+Layer Parents: [Mixed_6b/concat]
+Layer Inbounds: [Mixed_6b/concat]
+Layer Outbounds: [Mixed_6c/Branch_3/Conv2d_0b_1x1]
+Layer Device: 0
+------
+Layer Name: Mixed_6c/Branch_3/Conv2d_0b_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6c/Branch_3/AvgPool_0a_3x3'], 'type': 'Convolution', 'filter': [1, 1, 768, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6c/Branch_3/AvgPool_0a_3x3]
+Layer Inbounds: [Mixed_6c/Branch_3/AvgPool_0a_3x3]
+Layer Outbounds: [Mixed_6c/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_6c/Branch_2/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6b/concat'], 'type': 'Convolution', 'filter': [1, 1, 768, 160], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6b/concat]
+Layer Inbounds: [Mixed_6b/concat]
+Layer Outbounds: [Mixed_6c/Branch_2/Conv2d_0b_7x1]
+Layer Device: 0
+------
+Layer Name: Mixed_6c/Branch_2/Conv2d_0b_7x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6c/Branch_2/Conv2d_0a_1x1'], 'type': 'Convolution', 'filter': [7, 1, 160, 160], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6c/Branch_2/Conv2d_0a_1x1]
+Layer Inbounds: [Mixed_6c/Branch_2/Conv2d_0a_1x1]
+Layer Outbounds: [Mixed_6c/Branch_2/Conv2d_0c_1x7]
+Layer Device: 0
+------
+Layer Name: Mixed_6c/Branch_2/Conv2d_0c_1x7
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6c/Branch_2/Conv2d_0b_7x1'], 'type': 'Convolution', 'filter': [1, 7, 160, 160], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6c/Branch_2/Conv2d_0b_7x1]
+Layer Inbounds: [Mixed_6c/Branch_2/Conv2d_0b_7x1]
+Layer Outbounds: [Mixed_6c/Branch_2/Conv2d_0d_7x1]
+Layer Device: 0
+------
+Layer Name: Mixed_6c/Branch_2/Conv2d_0d_7x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6c/Branch_2/Conv2d_0c_1x7'], 'type': 'Convolution', 'filter': [7, 1, 160, 160], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6c/Branch_2/Conv2d_0c_1x7]
+Layer Inbounds: [Mixed_6c/Branch_2/Conv2d_0c_1x7]
+Layer Outbounds: [Mixed_6c/Branch_2/Conv2d_0e_1x7]
+Layer Device: 0
+------
+Layer Name: Mixed_6c/Branch_2/Conv2d_0e_1x7
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6c/Branch_2/Conv2d_0d_7x1'], 'type': 'Convolution', 'filter': [1, 7, 160, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6c/Branch_2/Conv2d_0d_7x1]
+Layer Inbounds: [Mixed_6c/Branch_2/Conv2d_0d_7x1]
+Layer Outbounds: [Mixed_6c/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_6c/Branch_1/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6b/concat'], 'type': 'Convolution', 'filter': [1, 1, 768, 160], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6b/concat]
+Layer Inbounds: [Mixed_6b/concat]
+Layer Outbounds: [Mixed_6c/Branch_1/Conv2d_0b_1x7]
+Layer Device: 0
+------
+Layer Name: Mixed_6c/Branch_1/Conv2d_0b_1x7
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6c/Branch_1/Conv2d_0a_1x1'], 'type': 'Convolution', 'filter': [1, 7, 160, 160], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6c/Branch_1/Conv2d_0a_1x1]
+Layer Inbounds: [Mixed_6c/Branch_1/Conv2d_0a_1x1]
+Layer Outbounds: [Mixed_6c/Branch_1/Conv2d_0b_7x1]
+Layer Device: 0
+------
+Layer Name: Mixed_6c/Branch_1/Conv2d_0b_7x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6c/Branch_1/Conv2d_0b_1x7'], 'type': 'Convolution', 'filter': [7, 1, 160, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6c/Branch_1/Conv2d_0b_1x7]
+Layer Inbounds: [Mixed_6c/Branch_1/Conv2d_0b_1x7]
+Layer Outbounds: [Mixed_6c/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_6c/Branch_0/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6b/concat'], 'type': 'Convolution', 'filter': [1, 1, 768, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6b/concat]
+Layer Inbounds: [Mixed_6b/concat]
+Layer Outbounds: [Mixed_6c/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_6c/concat
+Layer Type: Concatenate
+Layer Parameters: {'parents': ['Mixed_6c/Branch_0/Conv2d_0a_1x1', 'Mixed_6c/Branch_1/Conv2d_0b_7x1', 'Mixed_6c/Branch_2/Conv2d_0e_1x7', 'Mixed_6c/Branch_3/Conv2d_0b_1x1'], 'type': 'Concatenate', 'dim': 3, 'device': 0}
+Layer Parents: [Mixed_6c/Branch_0/Conv2d_0a_1x1, Mixed_6c/Branch_1/Conv2d_0b_7x1, Mixed_6c/Branch_2/Conv2d_0e_1x7, Mixed_6c/Branch_3/Conv2d_0b_1x1]
+Layer Inbounds: [Mixed_6c/Branch_0/Conv2d_0a_1x1, Mixed_6c/Branch_1/Conv2d_0b_7x1, Mixed_6c/Branch_2/Conv2d_0e_1x7, Mixed_6c/Branch_3/Conv2d_0b_1x1]
+Layer Outbounds: [Mixed_6d/Branch_0/Conv2d_0a_1x1, Mixed_6d/Branch_1/Conv2d_0a_1x1, Mixed_6d/Branch_2/Conv2d_0a_1x1, Mixed_6d/Branch_3/AvgPool_0a_3x3]
+Layer Device: 0
+------
+Layer Name: Mixed_6d/Branch_3/AvgPool_0a_3x3
+Layer Type: AvgPool
+Layer Parameters: {'parents': ['Mixed_6c/concat'], 'type': 'AvgPool', 'ksize': [1, 3, 3, 1], 'strides': [1, 1, 1, 1], 'padding': 'SAME', 'device': 0}
+Layer Parents: [Mixed_6c/concat]
+Layer Inbounds: [Mixed_6c/concat]
+Layer Outbounds: [Mixed_6d/Branch_3/Conv2d_0b_1x1]
+Layer Device: 0
+------
+Layer Name: Mixed_6d/Branch_3/Conv2d_0b_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6d/Branch_3/AvgPool_0a_3x3'], 'type': 'Convolution', 'filter': [1, 1, 768, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6d/Branch_3/AvgPool_0a_3x3]
+Layer Inbounds: [Mixed_6d/Branch_3/AvgPool_0a_3x3]
+Layer Outbounds: [Mixed_6d/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_6d/Branch_2/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6c/concat'], 'type': 'Convolution', 'filter': [1, 1, 768, 160], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6c/concat]
+Layer Inbounds: [Mixed_6c/concat]
+Layer Outbounds: [Mixed_6d/Branch_2/Conv2d_0b_7x1]
+Layer Device: 0
+------
+Layer Name: Mixed_6d/Branch_2/Conv2d_0b_7x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6d/Branch_2/Conv2d_0a_1x1'], 'type': 'Convolution', 'filter': [7, 1, 160, 160], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6d/Branch_2/Conv2d_0a_1x1]
+Layer Inbounds: [Mixed_6d/Branch_2/Conv2d_0a_1x1]
+Layer Outbounds: [Mixed_6d/Branch_2/Conv2d_0c_1x7]
+Layer Device: 0
+------
+Layer Name: Mixed_6d/Branch_2/Conv2d_0c_1x7
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6d/Branch_2/Conv2d_0b_7x1'], 'type': 'Convolution', 'filter': [1, 7, 160, 160], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6d/Branch_2/Conv2d_0b_7x1]
+Layer Inbounds: [Mixed_6d/Branch_2/Conv2d_0b_7x1]
+Layer Outbounds: [Mixed_6d/Branch_2/Conv2d_0d_7x1]
+Layer Device: 0
+------
+Layer Name: Mixed_6d/Branch_2/Conv2d_0d_7x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6d/Branch_2/Conv2d_0c_1x7'], 'type': 'Convolution', 'filter': [7, 1, 160, 160], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6d/Branch_2/Conv2d_0c_1x7]
+Layer Inbounds: [Mixed_6d/Branch_2/Conv2d_0c_1x7]
+Layer Outbounds: [Mixed_6d/Branch_2/Conv2d_0e_1x7]
+Layer Device: 0
+------
+Layer Name: Mixed_6d/Branch_2/Conv2d_0e_1x7
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6d/Branch_2/Conv2d_0d_7x1'], 'type': 'Convolution', 'filter': [1, 7, 160, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6d/Branch_2/Conv2d_0d_7x1]
+Layer Inbounds: [Mixed_6d/Branch_2/Conv2d_0d_7x1]
+Layer Outbounds: [Mixed_6d/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_6d/Branch_1/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6c/concat'], 'type': 'Convolution', 'filter': [1, 1, 768, 160], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6c/concat]
+Layer Inbounds: [Mixed_6c/concat]
+Layer Outbounds: [Mixed_6d/Branch_1/Conv2d_0b_1x7]
+Layer Device: 0
+------
+Layer Name: Mixed_6d/Branch_1/Conv2d_0b_1x7
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6d/Branch_1/Conv2d_0a_1x1'], 'type': 'Convolution', 'filter': [1, 7, 160, 160], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6d/Branch_1/Conv2d_0a_1x1]
+Layer Inbounds: [Mixed_6d/Branch_1/Conv2d_0a_1x1]
+Layer Outbounds: [Mixed_6d/Branch_1/Conv2d_0b_7x1]
+Layer Device: 0
+------
+Layer Name: Mixed_6d/Branch_1/Conv2d_0b_7x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6d/Branch_1/Conv2d_0b_1x7'], 'type': 'Convolution', 'filter': [7, 1, 160, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6d/Branch_1/Conv2d_0b_1x7]
+Layer Inbounds: [Mixed_6d/Branch_1/Conv2d_0b_1x7]
+Layer Outbounds: [Mixed_6d/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_6d/Branch_0/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6c/concat'], 'type': 'Convolution', 'filter': [1, 1, 768, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6c/concat]
+Layer Inbounds: [Mixed_6c/concat]
+Layer Outbounds: [Mixed_6d/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_6d/concat
+Layer Type: Concatenate
+Layer Parameters: {'parents': ['Mixed_6d/Branch_0/Conv2d_0a_1x1', 'Mixed_6d/Branch_1/Conv2d_0b_7x1', 'Mixed_6d/Branch_2/Conv2d_0e_1x7', 'Mixed_6d/Branch_3/Conv2d_0b_1x1'], 'type': 'Concatenate', 'dim': 3, 'device': 0}
+Layer Parents: [Mixed_6d/Branch_0/Conv2d_0a_1x1, Mixed_6d/Branch_1/Conv2d_0b_7x1, Mixed_6d/Branch_2/Conv2d_0e_1x7, Mixed_6d/Branch_3/Conv2d_0b_1x1]
+Layer Inbounds: [Mixed_6d/Branch_0/Conv2d_0a_1x1, Mixed_6d/Branch_1/Conv2d_0b_7x1, Mixed_6d/Branch_2/Conv2d_0e_1x7, Mixed_6d/Branch_3/Conv2d_0b_1x1]
+Layer Outbounds: [Mixed_6e/Branch_0/Conv2d_0a_1x1, Mixed_6e/Branch_1/Conv2d_0a_1x1, Mixed_6e/Branch_2/Conv2d_0a_1x1, Mixed_6e/Branch_3/AvgPool_0a_3x3]
+Layer Device: 0
+------
+Layer Name: Mixed_6e/Branch_3/AvgPool_0a_3x3
+Layer Type: AvgPool
+Layer Parameters: {'parents': ['Mixed_6d/concat'], 'type': 'AvgPool', 'ksize': [1, 3, 3, 1], 'strides': [1, 1, 1, 1], 'padding': 'SAME', 'device': 0}
+Layer Parents: [Mixed_6d/concat]
+Layer Inbounds: [Mixed_6d/concat]
+Layer Outbounds: [Mixed_6e/Branch_3/Conv2d_0b_1x1]
+Layer Device: 0
+------
+Layer Name: Mixed_6e/Branch_3/Conv2d_0b_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6e/Branch_3/AvgPool_0a_3x3'], 'type': 'Convolution', 'filter': [1, 1, 768, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6e/Branch_3/AvgPool_0a_3x3]
+Layer Inbounds: [Mixed_6e/Branch_3/AvgPool_0a_3x3]
+Layer Outbounds: [Mixed_6e/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_6e/Branch_2/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6d/concat'], 'type': 'Convolution', 'filter': [1, 1, 768, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6d/concat]
+Layer Inbounds: [Mixed_6d/concat]
+Layer Outbounds: [Mixed_6e/Branch_2/Conv2d_0b_7x1]
+Layer Device: 0
+------
+Layer Name: Mixed_6e/Branch_2/Conv2d_0b_7x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6e/Branch_2/Conv2d_0a_1x1'], 'type': 'Convolution', 'filter': [7, 1, 192, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6e/Branch_2/Conv2d_0a_1x1]
+Layer Inbounds: [Mixed_6e/Branch_2/Conv2d_0a_1x1]
+Layer Outbounds: [Mixed_6e/Branch_2/Conv2d_0c_1x7]
+Layer Device: 0
+------
+Layer Name: Mixed_6e/Branch_2/Conv2d_0c_1x7
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6e/Branch_2/Conv2d_0b_7x1'], 'type': 'Convolution', 'filter': [1, 7, 192, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6e/Branch_2/Conv2d_0b_7x1]
+Layer Inbounds: [Mixed_6e/Branch_2/Conv2d_0b_7x1]
+Layer Outbounds: [Mixed_6e/Branch_2/Conv2d_0d_7x1]
+Layer Device: 0
+------
+Layer Name: Mixed_6e/Branch_2/Conv2d_0d_7x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6e/Branch_2/Conv2d_0c_1x7'], 'type': 'Convolution', 'filter': [7, 1, 192, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6e/Branch_2/Conv2d_0c_1x7]
+Layer Inbounds: [Mixed_6e/Branch_2/Conv2d_0c_1x7]
+Layer Outbounds: [Mixed_6e/Branch_2/Conv2d_0e_1x7]
+Layer Device: 0
+------
+Layer Name: Mixed_6e/Branch_2/Conv2d_0e_1x7
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6e/Branch_2/Conv2d_0d_7x1'], 'type': 'Convolution', 'filter': [1, 7, 192, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6e/Branch_2/Conv2d_0d_7x1]
+Layer Inbounds: [Mixed_6e/Branch_2/Conv2d_0d_7x1]
+Layer Outbounds: [Mixed_6e/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_6e/Branch_1/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6d/concat'], 'type': 'Convolution', 'filter': [1, 1, 768, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6d/concat]
+Layer Inbounds: [Mixed_6d/concat]
+Layer Outbounds: [Mixed_6e/Branch_1/Conv2d_0b_1x7]
+Layer Device: 0
+------
+Layer Name: Mixed_6e/Branch_1/Conv2d_0b_1x7
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6e/Branch_1/Conv2d_0a_1x1'], 'type': 'Convolution', 'filter': [1, 7, 192, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6e/Branch_1/Conv2d_0a_1x1]
+Layer Inbounds: [Mixed_6e/Branch_1/Conv2d_0a_1x1]
+Layer Outbounds: [Mixed_6e/Branch_1/Conv2d_0b_7x1]
+Layer Device: 0
+------
+Layer Name: Mixed_6e/Branch_1/Conv2d_0b_7x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6e/Branch_1/Conv2d_0b_1x7'], 'type': 'Convolution', 'filter': [7, 1, 192, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6e/Branch_1/Conv2d_0b_1x7]
+Layer Inbounds: [Mixed_6e/Branch_1/Conv2d_0b_1x7]
+Layer Outbounds: [Mixed_6e/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_6e/Branch_0/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6d/concat'], 'type': 'Convolution', 'filter': [1, 1, 768, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6d/concat]
+Layer Inbounds: [Mixed_6d/concat]
+Layer Outbounds: [Mixed_6e/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_6e/concat
+Layer Type: Concatenate
+Layer Parameters: {'parents': ['Mixed_6e/Branch_0/Conv2d_0a_1x1', 'Mixed_6e/Branch_1/Conv2d_0b_7x1', 'Mixed_6e/Branch_2/Conv2d_0e_1x7', 'Mixed_6e/Branch_3/Conv2d_0b_1x1'], 'type': 'Concatenate', 'dim': 3, 'device': 0}
+Layer Parents: [Mixed_6e/Branch_0/Conv2d_0a_1x1, Mixed_6e/Branch_1/Conv2d_0b_7x1, Mixed_6e/Branch_2/Conv2d_0e_1x7, Mixed_6e/Branch_3/Conv2d_0b_1x1]
+Layer Inbounds: [Mixed_6e/Branch_0/Conv2d_0a_1x1, Mixed_6e/Branch_1/Conv2d_0b_7x1, Mixed_6e/Branch_2/Conv2d_0e_1x7, Mixed_6e/Branch_3/Conv2d_0b_1x1]
+Layer Outbounds: [Mixed_7a/Branch_0/Conv2d_0a_1x1, Mixed_7a/Branch_1/Conv2d_0a_1x1, Mixed_7a/Branch_2/MaxPool_1a_3x3]
+Layer Device: 0
+------
+Layer Name: Mixed_7a/Branch_2/MaxPool_1a_3x3
+Layer Type: Pooling
+Layer Parameters: {'parents': ['Mixed_6e/concat'], 'type': 'Pooling', 'ksize': [1, 3, 3, 1], 'strides': [1, 2, 2, 1], 'padding': 'VALID', 'device': 0}
+Layer Parents: [Mixed_6e/concat]
+Layer Inbounds: [Mixed_6e/concat]
+Layer Outbounds: [Mixed_7a/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_7a/Branch_1/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6e/concat'], 'type': 'Convolution', 'filter': [1, 1, 768, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6e/concat]
+Layer Inbounds: [Mixed_6e/concat]
+Layer Outbounds: [Mixed_7a/Branch_1/Conv2d_0b_1x7]
+Layer Device: 0
+------
+Layer Name: Mixed_7a/Branch_1/Conv2d_0b_1x7
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_7a/Branch_1/Conv2d_0a_1x1'], 'type': 'Convolution', 'filter': [1, 7, 192, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_7a/Branch_1/Conv2d_0a_1x1]
+Layer Inbounds: [Mixed_7a/Branch_1/Conv2d_0a_1x1]
+Layer Outbounds: [Mixed_7a/Branch_1/Conv2d_0b_7x1]
+Layer Device: 0
+------
+Layer Name: Mixed_7a/Branch_1/Conv2d_0b_7x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_7a/Branch_1/Conv2d_0b_1x7'], 'type': 'Convolution', 'filter': [7, 1, 192, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_7a/Branch_1/Conv2d_0b_1x7]
+Layer Inbounds: [Mixed_7a/Branch_1/Conv2d_0b_1x7]
+Layer Outbounds: [Mixed_7a/Branch_1/Conv2d_1a_3x3]
+Layer Device: 0
+------
+Layer Name: Mixed_7a/Branch_1/Conv2d_1a_3x3
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_7a/Branch_1/Conv2d_0b_7x1'], 'type': 'Convolution', 'filter': [3, 3, 192, 192], 'padding': 'VALID', 'strides': [1, 2, 2, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_7a/Branch_1/Conv2d_0b_7x1]
+Layer Inbounds: [Mixed_7a/Branch_1/Conv2d_0b_7x1]
+Layer Outbounds: [Mixed_7a/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_7a/Branch_0/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_6e/concat'], 'type': 'Convolution', 'filter': [1, 1, 768, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_6e/concat]
+Layer Inbounds: [Mixed_6e/concat]
+Layer Outbounds: [Mixed_7a/Branch_0/Conv2d_1a_3x3]
+Layer Device: 0
+------
+Layer Name: Mixed_7a/Branch_0/Conv2d_1a_3x3
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_7a/Branch_0/Conv2d_0a_1x1'], 'type': 'Convolution', 'filter': [3, 3, 192, 320], 'padding': 'VALID', 'strides': [1, 2, 2, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_7a/Branch_0/Conv2d_0a_1x1]
+Layer Inbounds: [Mixed_7a/Branch_0/Conv2d_0a_1x1]
+Layer Outbounds: [Mixed_7a/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_7a/concat
+Layer Type: Concatenate
+Layer Parameters: {'parents': ['Mixed_7a/Branch_0/Conv2d_1a_3x3', 'Mixed_7a/Branch_1/Conv2d_1a_3x3', 'Mixed_7a/Branch_2/MaxPool_1a_3x3'], 'type': 'Concatenate', 'dim': 3, 'device': 0}
+Layer Parents: [Mixed_7a/Branch_0/Conv2d_1a_3x3, Mixed_7a/Branch_1/Conv2d_1a_3x3, Mixed_7a/Branch_2/MaxPool_1a_3x3]
+Layer Inbounds: [Mixed_7a/Branch_0/Conv2d_1a_3x3, Mixed_7a/Branch_1/Conv2d_1a_3x3, Mixed_7a/Branch_2/MaxPool_1a_3x3]
+Layer Outbounds: [Mixed_7b/Branch_0/Conv2d_0a_1x1, Mixed_7b/Branch_1/Conv2d_0a_1x1, Mixed_7b/Branch_2/Conv2d_0a_1x1, Mixed_7b/Branch_3/AvgPool_0a_3x3]
+Layer Device: 0
+------
+Layer Name: Mixed_7b/Branch_3/AvgPool_0a_3x3
+Layer Type: AvgPool
+Layer Parameters: {'parents': ['Mixed_7a/concat'], 'type': 'AvgPool', 'ksize': [1, 3, 3, 1], 'strides': [1, 1, 1, 1], 'padding': 'SAME', 'device': 0}
+Layer Parents: [Mixed_7a/concat]
+Layer Inbounds: [Mixed_7a/concat]
+Layer Outbounds: [Mixed_7b/Branch_3/Conv2d_0b_1x1]
+Layer Device: 0
+------
+Layer Name: Mixed_7b/Branch_3/Conv2d_0b_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_7b/Branch_3/AvgPool_0a_3x3'], 'type': 'Convolution', 'filter': [1, 1, 1280, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_7b/Branch_3/AvgPool_0a_3x3]
+Layer Inbounds: [Mixed_7b/Branch_3/AvgPool_0a_3x3]
+Layer Outbounds: [Mixed_7b/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_7b/Branch_2/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_7a/concat'], 'type': 'Convolution', 'filter': [1, 1, 1280, 448], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_7a/concat]
+Layer Inbounds: [Mixed_7a/concat]
+Layer Outbounds: [Mixed_7b/Branch_2/Conv2d_0b_3x3]
+Layer Device: 0
+------
+Layer Name: Mixed_7b/Branch_2/Conv2d_0b_3x3
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_7b/Branch_2/Conv2d_0a_1x1'], 'type': 'Convolution', 'filter': [3, 3, 448, 384], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_7b/Branch_2/Conv2d_0a_1x1]
+Layer Inbounds: [Mixed_7b/Branch_2/Conv2d_0a_1x1]
+Layer Outbounds: [Mixed_7b/Branch_2/Conv2d_0c_1x3, Mixed_7b/Branch_2/Conv2d_0d_3x1]
+Layer Device: 0
+------
+Layer Name: Mixed_7b/Branch_2/Conv2d_0d_3x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_7b/Branch_2/Conv2d_0b_3x3'], 'type': 'Convolution', 'filter': [3, 1, 384, 384], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_7b/Branch_2/Conv2d_0b_3x3]
+Layer Inbounds: [Mixed_7b/Branch_2/Conv2d_0b_3x3]
+Layer Outbounds: [Mixed_7b/Branch_2/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_7b/Branch_2/Conv2d_0c_1x3
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_7b/Branch_2/Conv2d_0b_3x3'], 'type': 'Convolution', 'filter': [1, 3, 384, 384], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_7b/Branch_2/Conv2d_0b_3x3]
+Layer Inbounds: [Mixed_7b/Branch_2/Conv2d_0b_3x3]
+Layer Outbounds: [Mixed_7b/Branch_2/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_7b/Branch_2/concat
+Layer Type: Concatenate
+Layer Parameters: {'parents': ['Mixed_7b/Branch_2/Conv2d_0c_1x3', 'Mixed_7b/Branch_2/Conv2d_0d_3x1'], 'type': 'Concatenate', 'dim': 3, 'device': 0}
+Layer Parents: [Mixed_7b/Branch_2/Conv2d_0c_1x3, Mixed_7b/Branch_2/Conv2d_0d_3x1]
+Layer Inbounds: [Mixed_7b/Branch_2/Conv2d_0c_1x3, Mixed_7b/Branch_2/Conv2d_0d_3x1]
+Layer Outbounds: [Mixed_7b/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_7b/Branch_1/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_7a/concat'], 'type': 'Convolution', 'filter': [1, 1, 1280, 384], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_7a/concat]
+Layer Inbounds: [Mixed_7a/concat]
+Layer Outbounds: [Mixed_7b/Branch_1/Conv2d_0b_1x3, Mixed_7b/Branch_1/Conv2d_0b_3x1]
+Layer Device: 0
+------
+Layer Name: Mixed_7b/Branch_1/Conv2d_0b_3x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_7b/Branch_1/Conv2d_0a_1x1'], 'type': 'Convolution', 'filter': [3, 1, 384, 384], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_7b/Branch_1/Conv2d_0a_1x1]
+Layer Inbounds: [Mixed_7b/Branch_1/Conv2d_0a_1x1]
+Layer Outbounds: [Mixed_7b/Branch_1/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_7b/Branch_1/Conv2d_0b_1x3
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_7b/Branch_1/Conv2d_0a_1x1'], 'type': 'Convolution', 'filter': [1, 3, 384, 384], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_7b/Branch_1/Conv2d_0a_1x1]
+Layer Inbounds: [Mixed_7b/Branch_1/Conv2d_0a_1x1]
+Layer Outbounds: [Mixed_7b/Branch_1/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_7b/Branch_1/concat
+Layer Type: Concatenate
+Layer Parameters: {'parents': ['Mixed_7b/Branch_1/Conv2d_0b_1x3', 'Mixed_7b/Branch_1/Conv2d_0b_3x1'], 'type': 'Concatenate', 'dim': 3, 'device': 0}
+Layer Parents: [Mixed_7b/Branch_1/Conv2d_0b_1x3, Mixed_7b/Branch_1/Conv2d_0b_3x1]
+Layer Inbounds: [Mixed_7b/Branch_1/Conv2d_0b_1x3, Mixed_7b/Branch_1/Conv2d_0b_3x1]
+Layer Outbounds: [Mixed_7b/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_7b/Branch_0/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_7a/concat'], 'type': 'Convolution', 'filter': [1, 1, 1280, 320], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_7a/concat]
+Layer Inbounds: [Mixed_7a/concat]
+Layer Outbounds: [Mixed_7b/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_7b/concat
+Layer Type: Concatenate
+Layer Parameters: {'parents': ['Mixed_7b/Branch_0/Conv2d_0a_1x1', 'Mixed_7b/Branch_1/concat', 'Mixed_7b/Branch_2/concat', 'Mixed_7b/Branch_3/Conv2d_0b_1x1'], 'type': 'Concatenate', 'dim': 3, 'device': 0}
+Layer Parents: [Mixed_7b/Branch_0/Conv2d_0a_1x1, Mixed_7b/Branch_1/concat, Mixed_7b/Branch_2/concat, Mixed_7b/Branch_3/Conv2d_0b_1x1]
+Layer Inbounds: [Mixed_7b/Branch_0/Conv2d_0a_1x1, Mixed_7b/Branch_1/concat, Mixed_7b/Branch_2/concat, Mixed_7b/Branch_3/Conv2d_0b_1x1]
+Layer Outbounds: [Mixed_7c/Branch_0/Conv2d_0a_1x1, Mixed_7c/Branch_1/Conv2d_0a_1x1, Mixed_7c/Branch_2/Conv2d_0a_1x1, Mixed_7c/Branch_3/AvgPool_0a_3x3]
+Layer Device: 0
+------
+Layer Name: Mixed_7c/Branch_3/AvgPool_0a_3x3
+Layer Type: AvgPool
+Layer Parameters: {'parents': ['Mixed_7b/concat'], 'type': 'AvgPool', 'ksize': [1, 3, 3, 1], 'strides': [1, 1, 1, 1], 'padding': 'SAME', 'device': 0}
+Layer Parents: [Mixed_7b/concat]
+Layer Inbounds: [Mixed_7b/concat]
+Layer Outbounds: [Mixed_7c/Branch_3/Conv2d_0b_1x1]
+Layer Device: 0
+------
+Layer Name: Mixed_7c/Branch_3/Conv2d_0b_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_7c/Branch_3/AvgPool_0a_3x3'], 'type': 'Convolution', 'filter': [1, 1, 2048, 192], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_7c/Branch_3/AvgPool_0a_3x3]
+Layer Inbounds: [Mixed_7c/Branch_3/AvgPool_0a_3x3]
+Layer Outbounds: [Mixed_7c/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_7c/Branch_2/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_7b/concat'], 'type': 'Convolution', 'filter': [1, 1, 2048, 448], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_7b/concat]
+Layer Inbounds: [Mixed_7b/concat]
+Layer Outbounds: [Mixed_7c/Branch_2/Conv2d_0b_3x3]
+Layer Device: 0
+------
+Layer Name: Mixed_7c/Branch_2/Conv2d_0b_3x3
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_7c/Branch_2/Conv2d_0a_1x1'], 'type': 'Convolution', 'filter': [3, 3, 448, 384], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_7c/Branch_2/Conv2d_0a_1x1]
+Layer Inbounds: [Mixed_7c/Branch_2/Conv2d_0a_1x1]
+Layer Outbounds: [Mixed_7c/Branch_2/Conv2d_0c_1x3, Mixed_7c/Branch_2/Conv2d_0d_3x1]
+Layer Device: 0
+------
+Layer Name: Mixed_7c/Branch_2/Conv2d_0d_3x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_7c/Branch_2/Conv2d_0b_3x3'], 'type': 'Convolution', 'filter': [3, 1, 384, 384], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_7c/Branch_2/Conv2d_0b_3x3]
+Layer Inbounds: [Mixed_7c/Branch_2/Conv2d_0b_3x3]
+Layer Outbounds: [Mixed_7c/Branch_2/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_7c/Branch_2/Conv2d_0c_1x3
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_7c/Branch_2/Conv2d_0b_3x3'], 'type': 'Convolution', 'filter': [1, 3, 384, 384], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_7c/Branch_2/Conv2d_0b_3x3]
+Layer Inbounds: [Mixed_7c/Branch_2/Conv2d_0b_3x3]
+Layer Outbounds: [Mixed_7c/Branch_2/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_7c/Branch_2/concat
+Layer Type: Concatenate
+Layer Parameters: {'parents': ['Mixed_7c/Branch_2/Conv2d_0c_1x3', 'Mixed_7c/Branch_2/Conv2d_0d_3x1'], 'type': 'Concatenate', 'dim': 3, 'device': 0}
+Layer Parents: [Mixed_7c/Branch_2/Conv2d_0c_1x3, Mixed_7c/Branch_2/Conv2d_0d_3x1]
+Layer Inbounds: [Mixed_7c/Branch_2/Conv2d_0c_1x3, Mixed_7c/Branch_2/Conv2d_0d_3x1]
+Layer Outbounds: [Mixed_7c/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_7c/Branch_1/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_7b/concat'], 'type': 'Convolution', 'filter': [1, 1, 2048, 384], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_7b/concat]
+Layer Inbounds: [Mixed_7b/concat]
+Layer Outbounds: [Mixed_7c/Branch_1/Conv2d_0b_1x3, Mixed_7c/Branch_1/Conv2d_0b_3x1]
+Layer Device: 0
+------
+Layer Name: Mixed_7c/Branch_1/Conv2d_0b_3x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_7c/Branch_1/Conv2d_0a_1x1'], 'type': 'Convolution', 'filter': [3, 1, 384, 384], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_7c/Branch_1/Conv2d_0a_1x1]
+Layer Inbounds: [Mixed_7c/Branch_1/Conv2d_0a_1x1]
+Layer Outbounds: [Mixed_7c/Branch_1/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_7c/Branch_1/Conv2d_0b_1x3
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_7c/Branch_1/Conv2d_0a_1x1'], 'type': 'Convolution', 'filter': [1, 3, 384, 384], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_7c/Branch_1/Conv2d_0a_1x1]
+Layer Inbounds: [Mixed_7c/Branch_1/Conv2d_0a_1x1]
+Layer Outbounds: [Mixed_7c/Branch_1/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_7c/Branch_1/concat
+Layer Type: Concatenate
+Layer Parameters: {'parents': ['Mixed_7c/Branch_1/Conv2d_0b_1x3', 'Mixed_7c/Branch_1/Conv2d_0b_3x1'], 'type': 'Concatenate', 'dim': 3, 'device': 0}
+Layer Parents: [Mixed_7c/Branch_1/Conv2d_0b_1x3, Mixed_7c/Branch_1/Conv2d_0b_3x1]
+Layer Inbounds: [Mixed_7c/Branch_1/Conv2d_0b_1x3, Mixed_7c/Branch_1/Conv2d_0b_3x1]
+Layer Outbounds: [Mixed_7c/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_7c/Branch_0/Conv2d_0a_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Mixed_7b/concat'], 'type': 'Convolution', 'filter': [1, 1, 2048, 320], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': 'relu', 'normalizer_fn': 'batch_norm', 'device': 0}
+Layer Parents: [Mixed_7b/concat]
+Layer Inbounds: [Mixed_7b/concat]
+Layer Outbounds: [Mixed_7c/concat]
+Layer Device: 0
+------
+Layer Name: Mixed_7c/concat
+Layer Type: Concatenate
+Layer Parameters: {'parents': ['Mixed_7c/Branch_0/Conv2d_0a_1x1', 'Mixed_7c/Branch_1/concat', 'Mixed_7c/Branch_2/concat', 'Mixed_7c/Branch_3/Conv2d_0b_1x1'], 'type': 'Concatenate', 'dim': 3, 'device': 0}
+Layer Parents: [Mixed_7c/Branch_0/Conv2d_0a_1x1, Mixed_7c/Branch_1/concat, Mixed_7c/Branch_2/concat, Mixed_7c/Branch_3/Conv2d_0b_1x1]
+Layer Inbounds: [Mixed_7c/Branch_0/Conv2d_0a_1x1, Mixed_7c/Branch_1/concat, Mixed_7c/Branch_2/concat, Mixed_7c/Branch_3/Conv2d_0b_1x1]
+Layer Outbounds: [Logits/AvgPool_1a_8x8]
+Layer Device: 0
+------
+Layer Name: Logits/AvgPool_1a_8x8
+Layer Type: AvgPool
+Layer Parameters: {'parents': ['Mixed_7c/concat'], 'type': 'AvgPool', 'ksize': [1, 8, 8, 1], 'strides': [1, 2, 2, 1], 'padding': 'VALID', 'device': 0}
+Layer Parents: [Mixed_7c/concat]
+Layer Inbounds: [Mixed_7c/concat]
+Layer Outbounds: [Logits/Dropout_1b]
+Layer Device: 0
+------
+Layer Name: Logits/Dropout_1b
+Layer Type: Dropout
+Layer Parameters: {'parents': ['Logits/AvgPool_1a_8x8'], 'type': 'Dropout', 'dropout_keep_prob': 0.5, 'device': 0}
+Layer Parents: [Logits/AvgPool_1a_8x8]
+Layer Inbounds: [Logits/AvgPool_1a_8x8]
+Layer Outbounds: [Logits/Conv2d_1c_1x1]
+Layer Device: 0
+------
+Layer Name: Logits/Conv2d_1c_1x1
+Layer Type: Convolution
+Layer Parameters: {'parents': ['Logits/Dropout_1b'], 'type': 'Convolution', 'filter': [1, 1, 2048, 1000], 'padding': 'SAME', 'strides': [1, 1, 1, 1], 'activation_fn': None, 'normalizer_fn': None, 'device': 0}
+Layer Parents: [Logits/Dropout_1b]
+Layer Inbounds: [Logits/Dropout_1b]
+Layer Outbounds: [softmax]
+Layer Device: 0
+------
+Layer Name: softmax
+Layer Type: Softmax
+Layer Parameters: {'parents': ['Logits/Conv2d_1c_1x1'], 'type': 'Softmax', 'num_classes': 1000, 'device': 0}
+Layer Parents: [Logits/Conv2d_1c_1x1]
+Layer Inbounds: [Logits/Conv2d_1c_1x1]
+Layer Outbounds: [output]
+Layer Device: 0
+------
+Layer Name: output
+Layer Type: Output
+Layer Parameters: {'parents': ['softmax'], 'type': 'Output', 'tensor': [64, 1000], 'device': 1}
+Layer Parents: [softmax]
+Layer Inbounds: [softmax]
+Layer Outbounds: []
+Layer Device: 1
+------
+0.5231826305389404
+##############################
+0.22319722175598145
+##############################
+0.22854161262512207
+11.979294300079346
+##############################
+0.23142385482788086
+##############################
+local_time 19162.396696565356
+cloud_time 2376.4341878299165
+local_cloud_time 4329.631652293726
+network_time 746.919560514498
